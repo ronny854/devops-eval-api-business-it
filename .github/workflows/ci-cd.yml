@@ -86,27 +86,29 @@ jobs:
     env:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
+      SONAR_ORGANIZATION: ${{ vars.SONAR_ORGANIZATION }}
       SONAR_PROJECT_KEY: ${{ vars.SONAR_PROJECT_KEY }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-        if: ${{ env.SONAR_TOKEN != '' && env.SONAR_HOST_URL != '' && env.SONAR_PROJECT_KEY != '' }}
+        if: ${{ env.SONAR_TOKEN != '' && env.SONAR_HOST_URL != '' && env.SONAR_ORGANIZATION != '' && env.SONAR_PROJECT_KEY != '' }}
         with:
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
 
       - name: Download coverage report
         uses: actions/download-artifact@v8
-        if: ${{ env.SONAR_TOKEN != '' && env.SONAR_HOST_URL != '' && env.SONAR_PROJECT_KEY != '' }}
+        if: ${{ env.SONAR_TOKEN != '' && env.SONAR_HOST_URL != '' && env.SONAR_ORGANIZATION != '' && env.SONAR_PROJECT_KEY != '' }}
         with:
           name: coverage-lcov
           path: coverage
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@7006c4492b2e0ee0f816d36501671557c97f5995 # v8.1.0
-        if: ${{ env.SONAR_TOKEN != '' && env.SONAR_HOST_URL != '' && env.SONAR_PROJECT_KEY != '' }}
+        if: ${{ env.SONAR_TOKEN != '' && env.SONAR_HOST_URL != '' && env.SONAR_ORGANIZATION != '' && env.SONAR_PROJECT_KEY != '' }}
         with:
           args: >
+            -Dsonar.organization=${{ env.SONAR_ORGANIZATION }}
             -Dsonar.projectKey=${{ env.SONAR_PROJECT_KEY }}
             -Dsonar.sources=src
             -Dsonar.tests=test
@@ -117,8 +119,8 @@ jobs:
           SONAR_HOST_URL: ${{ env.SONAR_HOST_URL }}
 
       - name: Skip SonarQube
-        if: ${{ env.SONAR_TOKEN == '' || env.SONAR_HOST_URL == '' || env.SONAR_PROJECT_KEY == '' }}
-        run: echo "SonarQube configuration is incomplete; set SONAR_TOKEN, SONAR_HOST_URL and SONAR_PROJECT_KEY to enable the quality gate."
+        if: ${{ env.SONAR_TOKEN == '' || env.SONAR_HOST_URL == '' || env.SONAR_ORGANIZATION == '' || env.SONAR_PROJECT_KEY == '' }}
+        run: echo "SonarQube Cloud configuration is incomplete; set SONAR_TOKEN, SONAR_HOST_URL, SONAR_ORGANIZATION and SONAR_PROJECT_KEY to enable the quality gate."
 
   publish-artifact:
     name: Publish Docker image and release
