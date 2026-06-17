@@ -175,7 +175,7 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
-          password: ${{ secrets.TOKEN_GIT_CONTAINERS }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build image for security scan
         uses: docker/build-push-action@v7
