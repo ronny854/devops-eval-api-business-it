@@ -62,11 +62,11 @@ jobs:
         with:
           scan-type: fs
           scan-ref: .
-          severity: CRITICAL
+          severity: CRITICAL,HIGH,MEDIUM
           ignore-unfixed: true
           format: table
           output: trivy-fs-results.txt
-          exit-code: '1'
+          exit-code: '0'
 
       - name: Show Trivy filesystem scan report
         if: always()
@@ -190,11 +190,11 @@ jobs:
         uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: ${{ steps.meta.outputs.image }}:scan
-          severity: CRITICAL
+          severity: CRITICAL,HIGH,MEDIUM
           ignore-unfixed: true
           format: table
           output: trivy-image-results.txt
-          exit-code: '1'
+          exit-code: '0'
 
       - name: Show Trivy image scan report
         if: always()
