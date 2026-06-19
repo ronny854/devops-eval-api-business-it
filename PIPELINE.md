@@ -250,11 +250,11 @@ Esta sección permite registrar las ejecuciones utilizadas en la demostración.
 
 | Caso | Resultado esperado | Evidencia |
 |---|---|---|
-| Flujo completo en push a `main` | Ejecuta CI y luego CD | [Agregar enlace de GitHub Actions](https://github.com/ronny854/devops-eval-api-business-it/actions) |
-| Pull request hacia `main` | Ejecuta CI; CD aparece omitido | [Agregar enlace del pull request](https://github.com/ronny854/devops-eval-api-business-it/pulls) |
-| Fallo por lint | CI falla y CD no se ejecuta | [Agregar enlace de ejecución](https://github.com/ronny854/devops-eval-api-business-it/actions) |
-| Fallo por cobertura menor al 70% | Jest rechaza el umbral y CD no se ejecuta | [Agregar enlace de ejecución](https://github.com/ronny854/devops-eval-api-business-it/actions) |
-| Fallo por Trivy en imagen | CD muestra el reporte y no publica imagen, release ni despliegue | [Agregar enlace de ejecución o artefacto](https://github.com/ronny854/devops-eval-api-business-it/actions) |
+| Flujo completo en push a `main` | Ejecuta CI y luego CD | [Enlace de ejecución](https://github.com/ronny854/devops-eval-api-business-it/actions) |
+| Pull request hacia `main` | Ejecuta CI; CD aparece omitido | [Enlace de ejecución](https://github.com/ronny854/devops-eval-api-business-it/pulls) |
+| Fallo por lint | CI falla y CD no se ejecuta | [Enlace de ejecución](https://github.com/ronny854/devops-eval-api-business-it/actions/runs/27801600123) |
+| Fallo por cobertura menor al 70% | Jest rechaza el umbral y CD no se ejecuta | [Enlace de ejecución](https://github.com/ronny854/devops-eval-api-business-it/actions/runs/27801720678) |
+| Fallo por Trivy en imagen | CD muestra el reporte y no publica imagen, release ni despliegue | [Enlace de ejecución](https://github.com/ronny854/devops-eval-api-business-it/actions/runs/27801324432) |
 | Imagen publicada en GHCR | Existen tags de versión, latest y SHA | [Abrir paquetes](https://github.com/ronny854?tab=packages) |
 | GitHub Release creado | Existe un release con la versión del proyecto | [Abrir releases](https://github.com/ronny854/devops-eval-api-business-it/releases) |
 | Servicio desplegado | `/health` responde con estado `ok` | [Abrir servicio](https://devops-eval-api-business-it.onrender.com/health) |

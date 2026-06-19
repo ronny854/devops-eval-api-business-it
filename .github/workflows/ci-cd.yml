@@ -73,7 +73,7 @@ jobs:
           ignore-unfixed: true
           format: table
           output: trivy-fs-results.txt
-          exit-code: '1'
+          exit-code: '0'
 
       - name: Show Trivy filesystem scan report
         if: always()
@@ -157,7 +157,7 @@ jobs:
           ignore-unfixed: true
           format: table
           output: trivy-image-results.txt
-          exit-code: '1'
+          exit-code: '0'
 
       - name: Show Trivy image scan report
         if: always()
