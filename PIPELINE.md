@@ -250,8 +250,8 @@ Esta sección permite registrar las ejecuciones utilizadas en la demostración.
 
 | Caso | Resultado esperado | Evidencia |
 |---|---|---|
-| Flujo completo en push a `main` | Ejecuta CI y luego CD | [Enlace de ejecución](https://github.com/ronny854/devops-eval-api-business-it/actions) |
-| Pull request hacia `main` | Ejecuta CI; CD aparece omitido | [Enlace de ejecución](https://github.com/ronny854/devops-eval-api-business-it/pulls) |
+| Flujo completo en push a `main` | Ejecuta CI y luego CD | [Enlace de ejecución](https://github.com/ronny854/devops-eval-api-business-it/actions/runs/27802181571) |
+| Pull request hacia `main` | Ejecuta CI; CD aparece omitido | [Enlace de ejecución](https://github.com/ronny854/devops-eval-api-business-it/actions/runs/27802112776) |
 | Fallo por lint | CI falla y CD no se ejecuta | [Enlace de ejecución](https://github.com/ronny854/devops-eval-api-business-it/actions/runs/27801600123) |
 | Fallo por cobertura menor al 70% | Jest rechaza el umbral y CD no se ejecuta | [Enlace de ejecución](https://github.com/ronny854/devops-eval-api-business-it/actions/runs/27801720678) |
 | Fallo por Trivy en imagen | CD muestra el reporte y no publica imagen, release ni despliegue | [Enlace de ejecución](https://github.com/ronny854/devops-eval-api-business-it/actions/runs/27801324432) |
