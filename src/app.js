@@ -1,7 +1,6 @@
 const express = require('express');
 
 const app = express();
-const lintFailureForPipelineTest = true;
 
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
